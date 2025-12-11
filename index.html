@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PET听力练习清单</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 26px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .practice-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .practice-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .practice-item:hover {
+            background-color: #f8f9ff;
+            transform: translateX(5px);
+            border-radius: 8px;
+        }
+        .practice-item:last-child {
+            border-bottom: none;
+        }
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: #4CAF50;
+        }
+        .task-text {
+            font-size: 15px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        .task-text:hover {
+            color: #2196F3;
+            font-weight: 500;
+        }
+        .task-text.completed {
+            text-decoration: line-through;
+            color: #888;
+            opacity: 0.7;
+        }
+        .stats {
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            transition: width 0.5s ease;
+            border-radius: 5px;
+        }
+        .progress-text {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        .btn-reset {
+            background: #ff6b6b;
+        }
+        .btn-reset:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+        .btn-toggle {
+            background: #4ecdc4;
+        }
+        .btn-toggle:hover {
+            background: #26d0ce;
+            transform: translateY(-2px);
+        }
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .summary-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .summary-number {
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎧 PET精听清单</h1>
+        
+        <!-- PART4 部分 -->
+        <div class="section">
+            <div class="section-title">PART4 练习 (12项)</div>
+            <ul class="practice-list">
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test1-p4">
+                    <label for="test1-p4" class="task-text" onclick="toggleTask(this)">TEST1 PART4</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test2-p4">
+                    <label for="test2-p4" class="task-text" onclick="toggleTask(this)">TEST2 PART4</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test3-p4">
+                    <label for="test3-p4" class="task-text" onclick="toggleTask(this)">TEST3 PART4</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test4-p4">
+                    <label for="test4-p4" class="task-text" onclick="toggleTask(this)">TEST4 PART4</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test5-p4">
+                    <label for="test5-p4" class="task-text" onclick="toggleTask(this)">TEST5 PART4</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test6-p4">
+                    <label for="test6-p4" class="task-text" onclick="toggleTask(this)">TEST6 PART4</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test7-p4">
+                    <label for="test7-p4" class="task-text" onclick="toggleTask(this)">TEST7 PART4</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test8-p4">
+                    <label for="test8-p4" class="task-text" onclick="toggleTask(this)">TEST8 PART4</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="m1-p4">
+                    <label for="m1-p4" class="task-text" onclick="toggleTask(this)">M1 part4</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="m2-p4">
+                    <label for="m2-p4" class="task-text" onclick="toggleTask(this)">M2 part4</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="m3-p4">
+                    <label for="m3-p4" class="task-text" onclick="toggleTask(this)">M3 part 4</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="m4-p4">
+                    <label for="m4-p4" class="task-text" onclick="toggleTask(this)">M4 PART4</label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART3 部分 -->
+        <div class="section">
+            <div class="section-title">PART3 练习 (15项)</div>
+            <ul class="practice-list">
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test1-p3">
+                    <label for="test1-p3" class="task-text" onclick="toggleTask(this)">TEST1 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test2-p3">
+                    <label for="test2-p3" class="task-text" onclick="toggleTask(this)">TEST2 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test3-p3">
+                    <label for="test3-p3" class="task-text" onclick="toggleTask(this)">TEST3 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test4-p3">
+                    <label for="test4-p3" class="task-text" onclick="toggleTask(this)">TEST4 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test5-p3">
+                    <label for="test5-p3" class="task-text" onclick="toggleTask(this)">TEST5 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test6-p3">
+                    <label for="test6-p3" class="task-text" onclick="toggleTask(this)">TEST6 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test7-p3">
+                    <label for="test7-p3" class="task-text" onclick="toggleTask(this)">TEST7 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="m1-p3">
+                    <label for="m1-p3" class="task-text" onclick="toggleTask(this)">M1 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="m2-p3">
+                    <label for="m2-p3" class="task-text" onclick="toggleTask(this)">M2 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="m3-p3">
+                    <label for="m3-p3" class="task-text" onclick="toggleTask(this)">M3 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="m4-p3">
+                    <label for="m4-p3" class="task-text" onclick="toggleTask(this)">M4 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="e8-p3">
+                    <label for="e8-p3" class="task-text" onclick="toggleTask(this)">E8 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="e9-p3">
+                    <label for="e9-p3" class="task-text" onclick="toggleTask(this)">E9 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="e10-p3">
+                    <label for="e10-p3" class="task-text" onclick="toggleTask(this)">E10 PART3</label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART2 部分 -->
+        <div class="section">
+            <div class="section-title">PART2 练习 (8项)</div>
+            <ul class="practice-list">
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test1-p2">
+                    <label for="test1-p2" class="task-text" onclick="toggleTask(this)">TEST1 PART2</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test2-p2">
+                    <label for="test2-p2" class="task-text" onclick="toggleTask(this)">TEST2 PART2</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test3-p2">
+                    <label for="test3-p2" class="task-text" onclick="toggleTask(this)">TEST3 PART2</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test4-p2">
+                    <label for="test4-p2" class="task-text" onclick="toggleTask(this)">TEST4 PART2</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test5-p2">
+                    <label for="test5-p2" class="task-text" onclick="toggleTask(this)">TEST5 PART2</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test6-p2">
+                    <label for="test6-p2" class="task-text" onclick="toggleTask(this)">TEST6 PART2</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test7-p2">
+                    <label for="test7-p2" class="task-text" onclick="toggleTask(this)">TEST7 PART2</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test8-p2">
+                    <label for="test8-p2" class="task-text" onclick="toggleTask(this)">TEST8 PART2</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="stats">
+            <div class="progress-text">📊 总体完成进度</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div id="progressText">0/35 已完成 (0%)</div>
+            
+            <div class="summary">
+                <div class="summary-item">
+                    <span class="summary-number" id="p4-count">0/12</span>
+                    <span>PART4 完成</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-number" id="p3-count">0/14</span>
+                    <span>PART3 完成</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-number" id="p2-count">0/8</span>
+                    <span>PART2 完成</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-reset" onclick="resetAll()">🔄 重置所有</button>
+                <button class="btn btn-toggle" onclick="toggleAllSections()">📂 折叠/展开</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 切换任务完成状态
+        function toggleTask(element) {
+            element.classList.toggle('completed');
+            updateProgress();
+        }
+
+        // 更新进度
+        function updateProgress() {
+            const allItems = document.querySelectorAll('.practice-item');
+            const totalItems = allItems.length;
+            const completedItems = document.querySelectorAll('.task-text.completed').length;
+            const percentage = Math.round((completedItems / totalItems) * 100);
+            
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = `${completedItems}/${totalItems} 已完成 (${percentage}%)`;
+            
+            // 分别统计各部分完成情况
+            updateSectionProgress();
+        }
+
+        // 更新各部分进度
+        function updateSectionProgress() {
+            // PART4 统计 (12项)
+            const p4Completed = document.querySelectorAll('#test1-p4, #test2-p4, #test3-p4, #test4-p4, #test5-p4, #test6-p4, #test7-p4, #test8-p4, #m1-p4, #m2-p4, #m3-p4, #m4-p4')
+                .filter(cb => cb.nextElementSibling.classList.contains('completed')).length;
+            document.getElementById('p4-count').textContent = `${p4Completed}/12`;
+            
+            // PART3 统计 (14项)
+            const p3Completed = document.querySelectorAll('#test1-p3, #test2-p3, #test3-p3, #test4-p3, #test5-p3, #test6-p3, #test7-p3, #m1-p3, #m2-p3, #m3-p3, #m4-p3, #e8-p3, #e9-p3, #e10-p3')
+                .filter(cb => cb.nextElementSibling.classList.contains('completed')).length;
+            document.getElementById('p3-count').textContent = `${p3Completed}/14`;
+            
+            // PART2 统计 (8项)
+            const p2Completed = document.querySelectorAll('#test1-p2, #test2-p2, #test3-p2, #test4-p2, #test5-p2, #test6-p2, #test7-p2, #test8-p2')
+                .filter(cb => cb.nextElementSibling.classList.contains('completed')).length;
+            document.getElementById('p2-count').textContent = `${p2Completed}/8`;
+        }
+
+        // 重置所有任务
+        function resetAll() {
+            if (confirm('确定要重置所有任务吗？')) {
+                document.querySelectorAll('.task-text').forEach(item => {
+                    item.classList.remove('completed');
+                });
+                updateProgress();
+            }
+        }
+
+        // 折叠/展开所有部分
+        function toggleAllSections() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const list = section.querySelector('.practice-list');
+                if (list.style.display === 'none') {
+                    list.style.display = 'block';
+                } else {
+                    list.style.display = 'none';
+                }
+            });
+        }
+
+        // 监听复选框变化
+        document.querySelectorAll('.checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const label = this.nextElementSibling;
+                if (this.checked) {
+                    label.classList.add('completed');
+                } else {
+                    label.classList.remove('completed');
+                }
+                updateProgress();
+            });
+        });
+
+        // 初始化进度
+        updateProgress();
+    </script>
+</body>
+</html>
