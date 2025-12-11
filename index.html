@@ -137,7 +137,7 @@
         
         <!-- PART4 部分 -->
         <div class="section">
-            <div class="section-title">PART4 练习 (12项)</div>
+            <div class="section-title">PART4 </div>
             <ul class="practice-list" id="part4-list">
                 <li class="practice-item">
                     <input type="checkbox" class="checkbox" id="test1-p4">
@@ -192,7 +192,7 @@
 
         <!-- PART3 部分 -->
         <div class="section">
-            <div class="section-title">PART3 练习 (14项)</div>
+            <div class="section-title">PART3 </div>
             <ul class="practice-list" id="part3-list">
                 <li class="practice-item">
                     <input type="checkbox" class="checkbox" id="test1-p3">
@@ -221,6 +221,10 @@
                 <li class="practice-item">
                     <input type="checkbox" class="checkbox" id="test7-p3">
                     <label for="test7-p3" class="task-text">TEST7 PART3</label>
+                </li>
+                <li class="practice-item">
+                    <input type="checkbox" class="checkbox" id="test7-p3">
+                    <label for="test8-p3" class="task-text">TEST8 PART3</label>
                 </li>
                 <li class="practice-item">
                     <input type="checkbox" class="checkbox" id="m1-p3">
@@ -255,7 +259,7 @@
 
         <!-- PART2 部分 -->
         <div class="section">
-            <div class="section-title">PART2 练习 (8项)</div>
+            <div class="section-title">PART2 </div>
             <ul class="practice-list" id="part2-list">
                 <li class="practice-item">
                     <input type="checkbox" class="checkbox" id="test1-p2">
@@ -375,9 +379,9 @@
             const p4Completed = document.querySelectorAll('#part4-list .checkbox:checked').length;
             document.getElementById('p4-count').textContent = `${p4Completed}/12`;
             
-            // PART3 统计 (14项)
+            // PART3 统计 (15项)
             const p3Completed = document.querySelectorAll('#part3-list .checkbox:checked').length;
-            document.getElementById('p3-count').textContent = `${p3Completed}/14`;
+            document.getElementById('p3-count').textContent = `${p3Completed}/15`;
             
             // PART2 统计 (8项)
             const p2Completed = document.querySelectorAll('#part2-list .checkbox:checked').length;
@@ -398,3 +402,4 @@
     </script>
 </body>
 </html>
+
